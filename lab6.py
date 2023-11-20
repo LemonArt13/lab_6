@@ -1,3 +1,4 @@
+import time
 import random
 
 class Character:
@@ -29,13 +30,17 @@ def create_character():
     return Character(name, health, power)
 
 def battle(player1, player2):
+    print("Початок бою!")
     while player1.is_alive() and player2.is_alive():
         player1.attack(player2)
+        time.sleep(2)
         if not player2.is_alive():
             break
         player2.attack(player1)
+        time.sleep(2)
 
     if player1.is_alive():
+        time.sleep(1)
         print(f"{player1.name} переміг!")
     else:
         print(f"{player2.name} переміг!")
@@ -43,11 +48,13 @@ def battle(player1, player2):
 players = {1: None, 2: None}
 
 while True:
-    print("\nМеню:")
-    print("1. Вибрати героїв для битви")
-    print("2. Редагувати героя")
-    print("3. Запустити бій")
-    print("4. Вийти з програми")
+    time.sleep(1)
+    print("Вітаємо у PowerFight!",
+        "\nМеню:"
+        "\n1. Вибрати героїв для битви"
+        "\n2. Редагувати героя"
+        "\n3. Запустити бій"
+        "\n4. Вийти з програми")
 
     choice = input("Оберіть опцію: ")
 
